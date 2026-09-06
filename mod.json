@@ -1,11 +1,11 @@
 {
   "geode": "4.0.0",
   "gd": {
-    "android": "1.0"
+    "version": "2.206"
   },
   "id": "isaac.gd-deco-ai",
-  "version": "0.4.0",
   "name": "GD Deco AI",
-  "developer": "isaacrbell2017-cloud",
-  "binary": "isaac.gd-deco-ai"
+  "version": "0.4.0",
+  "developer": "Isaac",
+  "description": "An AI powered Geometry Dash decoration helper that helps create cool level decoration."
 }
