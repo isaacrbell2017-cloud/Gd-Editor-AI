@@ -1,7 +1,11 @@
 {
+  "geode": "v5.10.1",
+  "gd": {
+    "android": "2.2081"
+  },
   "id": "gd.deco.ai",
   "name": "GD Deco AI",
   "version": "0.4.0",
-  "developer": "GD Deco AI Team",
-  "description": "AI powered Geometry Dash decoration assistant"
+  "developer": "Isaac Bell",
+  "description": "AI powered Geometry Dash decoration assistant."
 }
