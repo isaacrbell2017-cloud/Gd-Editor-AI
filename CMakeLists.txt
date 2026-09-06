@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 
-project(GD-Deco-AI VERSION 0.4.0)
-
+project(isaac.gd-deco-ai VERSION 0.4.0)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
