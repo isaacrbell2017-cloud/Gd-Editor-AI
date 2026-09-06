@@ -1,4 +1,3 @@
-
 name: Build GD-Deco-AI
 
 on:
@@ -12,8 +11,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configure
-        run: cmake -S . -B build
+      - name: Build Geode mod
+        id: build
+        uses: geode-sdk/build-geode-mod@main
+        with:
+          target: Android64
 
-      - name: Build
-        run: cmake --build build --config Release
+      - name: Upload Geode mod
+        uses: actions/upload-artifact@v4
+        with:
+          name: GD-Deco-AI-Android64
+          path: ${{ steps.build.outputs.build-output }}
