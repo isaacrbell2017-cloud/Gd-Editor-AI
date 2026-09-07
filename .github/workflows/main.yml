@@ -16,7 +16,7 @@ jobs:
         uses: geode-sdk/build-geode-mod@main
         with:
           target: Android64
-          configure-args: "-DCMAKE_CXX_FLAGS=-DFMT_USE_CONSTEVAL=0"
+          configure-args: "-DGEODE_DISABLE_FMT_CONSTEVAL=ON"
 
       - name: Upload Geode mod
         uses: actions/upload-artifact@v4
