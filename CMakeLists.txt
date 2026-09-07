@@ -1,28 +1,18 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.25)
 
-project(GD-Deco-AI VERSION 0.4.0)
+project(GD_Deco_AI)
 
-# Geode needs C++20
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# Fix fmt + Clang 21 constexpr errors
+add_compile_definitions(FMT_USE_CONSTEXPR=0)
 
-# Force fmt fixes
-set(FMT_USE_CONSTEXPR OFF CACHE BOOL "" FORCE)
-set(FMT_USE_NONTYPE_TEMPLATE OFF CACHE BOOL "" FORCE)
-
-# Get source files
-file(GLOB_RECURSE SOURCES
-    src/*.cpp
+add_library(${PROJECT_NAME} SHARED
+    src/main.cpp
 )
 
-# Build mod
-add_library(${PROJECT_NAME} SHARED ${SOURCES})
-
-# Load Geode SDK
-add_subdirectory(
-    $ENV{GEODE_SDK}
-    ${CMAKE_CURRENT_BINARY_DIR}/geode
+target_include_directories(${PROJECT_NAME} PRIVATE
+    include
 )
 
-# Setup Geode
+find_package(Geode REQUIRED)
+
 setup_geode_mod(${PROJECT_NAME})
