@@ -2,15 +2,16 @@ cmake_minimum_required(VERSION 3.21)
 
 project(GD-Deco-AI VERSION 0.4.0)
 
-set(CMAKE_CXX_STANDARD 20)
+# Use C++17 (fixes fmt consteval build error)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Find all source files
+# Find source files
 file(GLOB_RECURSE SOURCES
     src/*.cpp
 )
 
-# Create the Geode mod library
+# Create Geode mod library
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
 # Load Geode SDK
