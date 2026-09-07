@@ -11,14 +11,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Fix fmt compile error
+        run: echo "CMAKE_CXX_FLAGS=-DFMT_USE_CONSTEXPR=0" >> $GITHUB_ENV
+
       - name: Build Geode mod
+        id: build
         uses: geode-sdk/build-geode-mod@main
         with:
           target: Android64
-          sdk: v4.0.0
 
       - name: Upload Geode mod
         uses: actions/upload-artifact@v4
         with:
-          name: GD-Deco-AI
+          name: GD-Deco-AI-Android64
           path: ${{ steps.build.outputs.build-output }}
