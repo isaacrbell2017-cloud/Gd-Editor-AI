@@ -1,4 +1,4 @@
-name: Build GD-Deco-AI
+name: Build Geode Mod
 
 on:
   workflow_dispatch:
@@ -12,13 +12,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build Geode mod
-        id: build
         uses: geode-sdk/build-geode-mod@main
         with:
           target: Android64
+          sdk: v4.0.0
 
       - name: Upload Geode mod
         uses: actions/upload-artifact@v4
         with:
-          name: GD-Deco-AI-Android64
+          name: GD-Deco-AI
           path: ${{ steps.build.outputs.build-output }}
