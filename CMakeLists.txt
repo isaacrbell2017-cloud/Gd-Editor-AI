@@ -1,18 +1,43 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.21)
 
-project(GD_Deco_AI)
+project(GD_Deco_AI VERSION 0.4.0)
 
-# Fix fmt + Clang 21 constexpr errors
-add_compile_definitions(FMT_USE_CONSTEXPR=0)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
+# Find all source files
+file(GLOB_RECURSE SOURCES
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
+)
+
+# Create the Geode mod library
 add_library(${PROJECT_NAME} SHARED
-    src/main.cpp
+    ${SOURCES}
 )
 
-target_include_directories(${PROJECT_NAME} PRIVATE
-    include
+# Geode SDK is provided by the GitHub build action
+if(DEFINED ENV{GEODE_SDK})
+    message(STATUS "Geode SDK found at: $ENV{GEODE_SDK}")
+else()
+    message(WARNING "GEODE_SDK environment variable is not set")
+endif()
+
+# Load the Geode SDK
+add_subdirectory(
+    "$ENV{GEODE_SDK}"
+    "${CMAKE_CURRENT_BINARY_DIR}/geode"
 )
 
-find_package(Geode REQUIRED)
-
+# Configure the project as a Geode mod
 setup_geode_mod(${PROJECT_NAME})
+
+# Enable position-independent code
+set_target_properties(${PROJECT_NAME}
+    PROPERTIES
+    POSITION_INDEPENDENT_CODE ON
+)
+
+# Print build information
+message(STATUS "Building GD Deco AI v0.4.0")
+message(STATUS "C++ Standard: C++20")
