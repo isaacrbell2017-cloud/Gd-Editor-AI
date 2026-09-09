@@ -2,9 +2,12 @@
 #include <Geode/modify/EditorUI.hpp>
 
 using namespace geode::prelude;
- $modify(GDDecoEditorUI, EditorUI) {
+
+$modify(GDDecoEditorUI, EditorUI) {
+
     bool init(LevelEditorLayer* editorLayer) {
-         (!EditorUI::init(editorLayer))
+
+        if (!EditorUI::init(editorLayer))
             return false;
 
         log::info("GD Deco AI: Editor opened!");
