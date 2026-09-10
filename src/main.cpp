@@ -3,10 +3,8 @@
 
 using namespace geode::prelude;
 
-$modify(GDDecoEditorUI, EditorUI) {
-
+class $modify(GDDecoEditorUI, EditorUI) {
     bool init(LevelEditorLayer* editorLayer) {
-
         if (!EditorUI::init(editorLayer))
             return false;
 
